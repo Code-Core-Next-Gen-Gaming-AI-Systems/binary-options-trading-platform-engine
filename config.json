@@ -1,29 +1,65 @@
 {
-  "platform": {
-    "name": "AI Binary Options Core Engine",
-    "version": "1.0.0",
+  "_metadata": {
+    "project": "AI Binary Options & Trading Engine",
     "brand": "Code Core Hub",
-    "powered_by": "Mint Scripts Studio",
-    "official_website": "https://mintscripts.net",
-    "license": "Commercial Enterprise / Open Source Hub"
+    "supported_by": "Mint Scripts Studio",
+    "official_docs": "https://mintscripts.net/en/market/25-kupit-skript-binarnyh-opcionov-ai-mint-scripts.html",
+    "description": "Comprehensive platform configuration file. Adjust risk parameters, RTP, price feeds, and AI models on the fly."
   },
-  "trading_settings": {
-    "default_currency": "USDT",
-    "min_trade_amount": 1.0,
-    "max_trade_amount": 1000.0,
-    "default_payout_percent": 85.0,
+  "risk_management": {
     "win_chance_percent": 55.0,
-    "volatility_multiplier": 1.25
+    "win_chance_description": "Controls the global house edge and RTP (Return to Player). If set to 55.0, 55% of random outcomes are balanced by the system margin to prevent platform cash drains.",
+    "max_payout_multiplier": 1.85,
+    "max_payout_description": "Defines the user return rate per successful trade (e.g., 1.85 means 85% net profit return on the invested amount).",
+    "allow_unlimited_payouts": false,
+    "max_daily_loss_limit_usdt": 5000.0
   },
-  "ai_module": {
+  "market_data_sources": {
+    "price_feed_mode": "hybrid",
+    "primary_provider": "Binance WebSocket API",
+    "fallback_provider": "CoinGecko REST API",
+    "supported_pairs": [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "TON/USDT",
+      "EUR/USD"
+    ],
+    "price_feed_description": "Real-time cryptocurrency and forex quotes are pulled via secure WebSocket feeds with built-in anti-slippage and volatility smoothing filters.",
+    "tick_interval_ms": 1000
+  },
+  "ai_trading_module": {
     "enabled": true,
-    "analysis_interval_sec": 5,
+    "ai_engine_version": "v1.0-core",
+    "indicators_used": [
+      "RSI (Relative Strength Index)",
+      "Moving Average Convergence Divergence (MACD)",
+      "Bollinger Bands Volatility"
+    ],
     "min_confidence_threshold": 60,
-    "max_confidence_threshold": 95
+    "max_confidence_threshold": 95,
+    "ai_description": "Automatically scans historical trends and current order book volatility to issue real-time CALL/UP or PUT/DOWN signals to users with explicit confidence scores."
   },
-  "gateways": {
-    "crypto_provider": "CryptoCloud",
-    "supported_networks": ["USDT_TRC20", "BTC", "ETH", "TON"],
-    "fee_percent": 0.0
+  "financial_gateways": {
+    "default_settlement_currency": "USDT",
+    "supported_networks": [
+      "USDT_TRC20",
+      "TON_NATIVE",
+      "BTC_MAINNET",
+      "ETH_ERC20"
+    ],
+    "crypto_gateway_provider": "CryptoCloud API",
+    "auto_withdrawal_enabled": true,
+    "min_deposit_amount": 10.0,
+    "min_withdrawal_amount": 20.0,
+    "gateway_description": "Direct, independent crypto acceptance without middlemen. Fully isolates financial transactions and logs them securely into the MySQL database ledger."
+  },
+  "user_session_limits": {
+    "demo_account_initial_balance": 50000.0,
+    "min_trade_amount": 1.0,
+    "max_trade_amount": 2500.0,
+    "max_open_trades_per_user": 5,
+    "gamification_enabled": true,
+    "tournaments_active": true
   }
 }
