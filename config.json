@@ -1,0 +1,29 @@
+{
+  "platform": {
+    "name": "AI Binary Options Core Engine",
+    "version": "1.0.0",
+    "brand": "Code Core Hub",
+    "powered_by": "Mint Scripts Studio",
+    "official_website": "https://mintscripts.net",
+    "license": "Commercial Enterprise / Open Source Hub"
+  },
+  "trading_settings": {
+    "default_currency": "USDT",
+    "min_trade_amount": 1.0,
+    "max_trade_amount": 1000.0,
+    "default_payout_percent": 85.0,
+    "win_chance_percent": 55.0,
+    "volatility_multiplier": 1.25
+  },
+  "ai_module": {
+    "enabled": true,
+    "analysis_interval_sec": 5,
+    "min_confidence_threshold": 60,
+    "max_confidence_threshold": 95
+  },
+  "gateways": {
+    "crypto_provider": "CryptoCloud",
+    "supported_networks": ["USDT_TRC20", "BTC", "ETH", "TON"],
+    "fee_percent": 0.0
+  }
+}
